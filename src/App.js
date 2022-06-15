@@ -8,6 +8,7 @@ import CollectionList from './pages/Collection/CollectionList';
 import CollectionDetail from './pages/Collection/CollectionDetail'; 
 import AnimeDetail from './pages/AnimeDetail/AnimeDetail';
 import CollectionContextProvider from './hooks/context/CollectionContext';
+import NewNavbar from './components/Navbar/newNavbar';
 
 function App() {
   return (
@@ -16,7 +17,8 @@ function App() {
     `}>
       <CollectionContextProvider>
         <Router>
-          <Navbar />
+          <NewNavbar />
+          {/* <Navbar /> */}
           <Routes>
             <Route path='/' exact element={<Home />} />
             <Route path='/Collection' exact element={<CollectionList />} />
