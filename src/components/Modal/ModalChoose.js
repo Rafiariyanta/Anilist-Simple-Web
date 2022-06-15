@@ -18,14 +18,18 @@ const ModalChoose = ({ setOpenModal, filteredList, handleInputChoose }) => {
     const [name, setName] = useState('');
 
     useEffect(() => {
-        var data = collection.filter(
-            (col) => {
-                return filteredList.some((f) => {
-                    return col.CollectionName !== f.CollectionName
-                })
-            }    
-        );
+        // var data = collection.filter(
+        //     col => {
+        //         // return filteredList.some((f) => {
+        //         //     return f.CollectionName !== col.CollectionName
+        //         // })
+        //         filteredList.every(f => f.id !== col.id);
+        //     }    
+        // );
+
+        var data = collection.filter((elem) => !filteredList.find( (f) => elem.id === f.id ));
         setFilteredLists(data);
+        console.log(data);
     }, [])
     return ( 
         <ModalBackground>

@@ -24,6 +24,7 @@ const AnimeDetail = () => {
     const { error, data, loading } = useAnimeDetail(id);
     const { collection, dispatch } = useContext(CollectionContext);
     const [filteredList, setFilteredList] = useState(null);
+    const [availableCol, setAvailableCol] = useState(null);
     const [selectState, setSelectState] = useState("overview");
     const [modalFormOpen, setModalFormOpen] = useState(false);
     const [modalChooseOpen, setModalChooseOpen] = useState(false);
@@ -34,6 +35,7 @@ const AnimeDetail = () => {
         //     (col) => col.CollectionName === name
         // )
         // console.log(selectedCol);
+        dispatch({type: 'ADD_ANIME', col: {name: name, animeId: data.Media.id}});
         setModalFormOpen(false);
     }
 

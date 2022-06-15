@@ -13,12 +13,13 @@ import CollectionCard from '../../components/Card/CollectionCard';
 
 const CollectionDetail = () => {
     const { id } = useParams();
-    const { collection } = useContext(CollectionContext);
+    const { collection, dispatch } = useContext(CollectionContext);
     const selectCol = collection[id - 1];
     const { error, data, loading } = useCollectionList(1, selectCol.ids.length, selectCol.ids);
     console.log(data);
-    const handleDelete = () => {
-        console.log("delBtn Clicked");
+
+    const handleDelete = (id) => {
+        dispatch({type: 'REMOVE_ANIME', col: {name: selectCol.CollectionName, animeId: id}});
     }
     return (
         <div>
